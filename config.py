@@ -6,9 +6,9 @@ from modules.layouts import get_layouts
 from modules.screens import get_screens
 
 widget_defaults = dict(
-    font='sans',
-    fontsize=12,
-    padding=3,
+	font='sans',
+	fontsize=12,
+	padding=3,
 )
 extension_defaults = widget_defaults.copy()
 
@@ -33,20 +33,20 @@ follow_mouse_focus = False
 bring_front_click = True
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
-    {'wmclass': 'confirm'},
-    {'wmclass': 'dialog'},
-    {'wmclass': 'download'},
-    {'wmclass': 'error'},
-    {'wmclass': 'file_progress'},
-    {'wmclass': 'notification'},
-    {'wmclass': 'splash'},
-    {'wmclass': 'toolbar'},
-    {'wmclass': 'confirmreset'},  # gitk
-    {'wmclass': 'makebranch'},  # gitk
-    {'wmclass': 'maketag'},  # gitk
-    {'wname': 'branchdialog'},  # gitk
-    {'wname': 'pinentry'},  # GPG key password entry
-    {'wmclass': 'ssh-askpass'},  # ssh-askpass
+	{'wmclass': 'confirm'},
+	{'wmclass': 'dialog'},
+	{'wmclass': 'download'},
+	{'wmclass': 'error'},
+	{'wmclass': 'file_progress'},
+	{'wmclass': 'notification'},
+	{'wmclass': 'splash'},
+	{'wmclass': 'toolbar'},
+	{'wmclass': 'confirmreset'},  # gitk
+	{'wmclass': 'makebranch'},  # gitk
+	{'wmclass': 'maketag'},  # gitk
+	{'wname': 'branchdialog'},  # gitk
+	{'wname': 'pinentry'},  # GPG key password entry
+	{'wmclass': 'ssh-askpass'},  # ssh-askpass
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
@@ -64,16 +64,16 @@ wmname = "LG3D"
 
 @hook.subscribe.screen_change
 def restart_on_randr(qtile, ev):
-    qtile.cmd_restart()
+	qtile.cmd_restart()
 
 
 @hook.subscribe.client_new
 def func(c):
-    if c.name in ["Discord", "Activité - Discord", "Discord Updater", "Telegram"]:
-        c.togroup("F4")
-    elif c.name in ["Mozilla Firefox"]:
-        c.togroup("F3")
-    elif c.name in ["calibre", "V calibre"]:
-        c.togroup("F2")
-    elif c.name in ["PyCharm", "IntelliJ IDEA", "Clion", "win0"]:
-        c.togroup("F1")
+	if c.name in ["Discord", "Activité - Discord", "Discord Updater", "Telegram"]:
+		c.togroup("F4")
+	elif c.name in ["Mozilla Firefox"]:
+		c.togroup("F3")
+	elif c.name in ["calibre", "V calibre"]:
+		c.togroup("F2")
+	elif c.name in ["PyCharm", "IntelliJ IDEA", "Clion", "win0"]:
+		c.togroup("F1")
