@@ -33,7 +33,7 @@ def get_keys(groups=[]):
 		## Toggle between different layouts as defined below
 		Key([meta], "Tab", lazy.next_layout()),
 
-		## switch to screen
+		## switch to screen (max 2 screen setup)
 		Key([meta], "Up", lazy.to_screen(0)),
 		Key([meta], "Down", lazy.to_screen(1)),
 
@@ -41,15 +41,20 @@ def get_keys(groups=[]):
 		Key([meta], "Left", lazy.layout.up()),
 		Key([meta], "Right", lazy.layout.down()),
 
-		## Move windows up or down in current stack
+		## Move windows up or down in current stack (monadtall)
 		Key([meta, ctrl], "Left", lazy.layout.shuffle_up()),
 		Key([meta, ctrl], "Right", lazy.layout.shuffle_down()),
+
+		## Move window to the next or previous stack (stack)
+		Key([meta, ctrl], "Left", lazy.layout.client_to_previous()),
+		Key([meta, ctrl], "Right", lazy.layout.client_to_next()),
 
 		## Switch window focus to other pane(s) of stack
 		Key([meta], "space", lazy.layout.next()),
 
-		## Swap panes of split stack
-		Key([meta, shift], "space", lazy.layout.rotate()),
+		## Swap panes of stack and monadtall
+		Key([meta], "KP_Enter", lazy.layout.swap_main(), lazy.layout.rotate()),
+		Key([meta, ctrl], "KP_Enter", lazy.layout.toggle_split()),
 
 
 		# window/tile management
@@ -59,10 +64,9 @@ def get_keys(groups=[]):
 		Key([meta, ctrl], "XF86MonBrightnessDown", lazy.window.opacity(0.1)),
 		Key([meta, ctrl], "XF86MonBrightnessUp", lazy.window.opacity(1)),
 
-		## tile size change
+		## tile size change (monadtall)
 		Key([meta], "KP_Add", lazy.layout.grow()),
 		Key([meta], "KP_Subtract", lazy.layout.shrink()),
-		Key([meta], "KP_Enter", lazy.layout.swap_main()),
 		Key([meta], "KP_Multiply", lazy.layout.maximize()),
 		Key([meta], "KP_Divide", lazy.layout.flip()),
 
