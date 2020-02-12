@@ -4,7 +4,7 @@ from libqtile.config import Group
 from modules.keys import get_keys, get_mouse
 from modules.layouts import get_layouts
 from modules.screens import get_screens
-from os import execl
+from subprocess import run
 
 widget_defaults = dict(
     font='sans',
@@ -13,7 +13,7 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-screens = get_screens()
+screens = []
 
 meta = "mod4"
 
@@ -29,7 +29,9 @@ mouse = get_mouse()
 
 dgroups_key_binder = None
 dgroups_app_rules = []
-main = None
+
+
+
 follow_mouse_focus = False
 bring_front_click = True
 cursor_warp = False
@@ -63,8 +65,16 @@ focus_on_window_activation = "smart"
 wmname = "LG3D"
 
 
+def main(q):
+    screens.clear()
+    for screen in get_screens():
+        screens.append(screen)
+
+
 @hook.subscribe.screen_change
 def restart_on_randr(qtile, ev):
+    run("xrandr --auto".split())
+    run("xrandr --output HDMI-1 --right-of eDP-1".split())
     qtile.cmd_restart()
 
 
